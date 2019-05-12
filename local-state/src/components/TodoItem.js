@@ -15,13 +15,19 @@ const TodoItem = ({ todo, onToggleTodo }) => {
   );
 };
 
-const mapDispatchToProps = dispatch => {
+const mapStateToProps = (state, props) => {
+  return {
+    todo: state.todo.entities[props.todoId]
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
   return {
     onToggleTodo: id => dispatch(toggleTodo({ id }))
   };
 };
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(TodoItem);

@@ -2,11 +2,11 @@ import React from "react";
 import { connect } from "react-redux";
 import TodoItem from "./TodoItem";
 
-const TodoList = ({ todos }) => {
+const TodoList = ({ todosAsIds }) => {
   return (
     <div>
-      {todos.map(todo => (
-        <TodoItem key={todo.id} todo={todo} />
+      {todosAsIds.map(todoId => (
+        <TodoItem key={todoId} todoId={todoId} />
       ))}
     </div>
   );
@@ -14,11 +14,10 @@ const TodoList = ({ todos }) => {
 
 const mapStateToProps = state => {
   return {
-    todos: state.todos
+    todosAsIds: state.todo.ids
   };
 };
 
 export default connect(
-  mapStateToProps,
-  null
+  mapStateToProps
 )(TodoList);

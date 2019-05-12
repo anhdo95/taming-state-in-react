@@ -12,7 +12,7 @@ class TodoApp extends Component {
   }
 
   componentDidMount() {
-    this.props.addTodo({ id: 2, name: "new todo" });
+    this.props.addTodo({ id: 100, name: "new todo" });
     this.props.doSetFilter("COMPLETED");
   }
 
