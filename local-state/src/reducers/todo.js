@@ -21,8 +21,6 @@ const initialTodoState = {
   ids: normalizedTodos.result
 };
 
-console.log("initialTodoState :", initialTodoState);
-
 export default (state = initialTodoState, action) => {
   switch (action.type) {
     case TODO_ADD:

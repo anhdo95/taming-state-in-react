@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { getTodo } from '../selectors/todo'
 import { toggleTodo } from "../actions";
 
 const TodoItem = ({ todo, onToggleTodo }) => {
@@ -17,7 +18,7 @@ const TodoItem = ({ todo, onToggleTodo }) => {
 
 const mapStateToProps = (state, props) => {
   return {
-    todo: state.todo.entities[props.todoId]
+    todo: getTodo(state, props.todoId)
   }
 }
 

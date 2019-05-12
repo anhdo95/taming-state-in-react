@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import TodoItem from "./TodoItem";
+import { getTodosAsIds } from '../selectors/todo'
 
 const TodoList = ({ todosAsIds }) => {
   return (
@@ -14,7 +15,7 @@ const TodoList = ({ todosAsIds }) => {
 
 const mapStateToProps = state => {
   return {
-    todosAsIds: state.todo.ids
+    todosAsIds: getTodosAsIds(state)
   };
 };
 
