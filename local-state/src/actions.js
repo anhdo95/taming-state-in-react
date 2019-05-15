@@ -2,7 +2,8 @@ import {
   TODO_ADD,
   TODO_TOGGLE,
   FILTER_SET,
-  ASSIGNED_TO_CHANGE
+  ASSIGNED_TO_CHANGE,
+  NOTIFICATION_HIDE
 } from "./constant";
 
 export const addTodo = todo => {
@@ -36,6 +37,25 @@ export const assignedToChange = () => {
     payload: {
       todoId: 0,
       name: "Dan Abramov and Andrew Clark"
+    }
+  };
+};
+
+export const doAddTodoWithNotification = todo => {
+  return dispatch => {
+    dispatch(addTodo(todo));
+
+    setTimeout(() => {
+      dispatch(doHideNotification(todo.id));
+    }, 3000);
+  };
+};
+
+export const doHideNotification = id => {
+  return {
+    type: NOTIFICATION_HIDE,
+    payload: {
+      id
     }
   };
 };

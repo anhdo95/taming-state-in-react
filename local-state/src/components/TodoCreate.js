@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import uuid from "uuid/v4";
-import { addTodo } from "../actions";
+import { doAddTodoWithNotification } from "../actions";
 
 class TodoCreate extends Component {
   constructor(props) {
@@ -19,6 +19,7 @@ class TodoCreate extends Component {
   onCreateTodo = event => {
     this.props.onAddTodo({ id: uuid(), name: this.state.value });
     this.setState({ value: "" });
+
     event.preventDefault();
   };
 
@@ -31,7 +32,9 @@ class TodoCreate extends Component {
           value={this.state.value}
           onChange={this.onChangeName}
         />
-        <button type="submit">Add</button>
+        <button type="button" onClick={this.onCreateTodo}>
+          Add
+        </button>
       </form>
     );
   }
@@ -43,7 +46,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onAddTodo: newTodo => dispatch(addTodo(newTodo))
+    onAddTodo: newTodo => dispatch(doAddTodoWithNotification(newTodo)),
   };
 };
 
