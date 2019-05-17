@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import uuid from "uuid/v4";
-import { doAddTodoWithNotification } from "../actions";
+import {
+  doAddTodoWithNotification,
+} from "../actions";
 
 class TodoCreate extends Component {
   constructor(props) {
@@ -46,7 +48,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onAddTodo: newTodo => dispatch(doAddTodoWithNotification(newTodo)),
+    onAddTodo: newTodo => dispatch(doAddTodoWithNotification(newTodo))
   };
 };
 

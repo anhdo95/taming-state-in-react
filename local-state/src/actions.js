@@ -3,7 +3,8 @@ import {
   TODO_TOGGLE,
   FILTER_SET,
   ASSIGNED_TO_CHANGE,
-  NOTIFICATION_HIDE
+  NOTIFICATION_HIDE,
+  TODO_ADD_WITH_NOTIFICATION
 } from "./constant";
 
 export const addTodo = todo => {
@@ -42,13 +43,10 @@ export const assignedToChange = () => {
 };
 
 export const doAddTodoWithNotification = todo => {
-  return dispatch => {
-    dispatch(addTodo(todo));
-
-    setTimeout(() => {
-      dispatch(doHideNotification(todo.id));
-    }, 3000);
-  };
+  return {
+    type: TODO_ADD_WITH_NOTIFICATION,
+    todo
+  }
 };
 
 export const doHideNotification = id => {
